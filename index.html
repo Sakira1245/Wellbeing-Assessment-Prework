@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>I'M IN CHARGE OF ME</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="shortcut icon" href="assets/DHL_favicon_256x256.png" type="image/x-icon">
+    <!-- font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+
+    <!-- font awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+</head>
+
+<body class="barlow">
+    <!-- Employee Info Screen -->
+     <div id="employeeInfoScreen" class="screen active bg-slate-50">
+            <div class="card">
+                <div class="header-section flex items-center justify-center flex-wrap">
+                    <img src="assets/DHL_Logo_BF_rgb 1.png" alt="" class="w-fit h-12 mx-auto mb-4 fade-sides">
+                    <h1>Wellbeing Assessment Prework</h1>
+                    <p>Please enter your information to begin the pre-training assessment</p>
+                </div>
+
+                <form id="employeeForm">
+                    <div class="form-group">
+                        <label for="employeeName">Full Name</label>
+                        <input type="text" id="employeeName" placeholder="Enter your full name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="employeeId">Employee ID</label>
+                        <input type="text" id="employeeId" placeholder="Enter your employee ID" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="employeeDepartment">Department</label>
+                        <select id="employeeDepartment" required>
+                            <option value="">Select your department</option>
+                            <option value="IT">IT</option>
+                            <option value="Commercial">Commercial</option>
+                            <option value="Finance & Admin">Finance & Admin</option>
+                            <option value="Operations">Operations</option>
+                            <option value="Customer Support">Customer Service</option>
+                            <option value="Customer Support">HR</option>
+                            <option value="Customer Support">General Management</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-large">Start Assessment</button>
+                </form>
+            </div>
+        </div>
+
+
+    <!-- Assessment Screen -->
+    <div id="assessmentScreen" class="screen">
+            <div class="card-large mx-auto">
+                <!-- Tab Navigation -->
+                <div class="tabs">
+                    <button class="tab tab-body active" data-tab="body">Body</button>
+                    <button class="tab tab-mind" data-tab="mind">Mind</button>
+                    <button class="tab tab-heart" data-tab="heart">Heart</button>
+                    <button class="tab tab-purpose" data-tab="purpose">Purpose</button>
+                </div>
+
+                <!-- Progress Bar -->
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+
+                <!-- Assessment Content -->
+                <div class="assessment-content">
+                    <!-- Scale Legend -->
+                    <div class="scale-legend">
+                        <span>5 – Always True</span>
+                        <span>4 – Mostly True</span>
+                        <span>3 – Sometimes True</span>
+                        <span>2 – Rarely True</span>
+                        <span>1 – Never True</span>
+                    </div>
+
+                    <!-- Questions Container -->
+                    <div id="questionsContainer"></div>
+
+                    <!-- Total Score -->
+                    <div class="total-score">
+                        <p>My <span id="currentCategory">body</span> fuel tank total is: <strong
+                                id="categoryTotal">0</strong></p>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="action-buttons">
+                        <button id="prevBtn" class="btn btn-danger">Previous</button>
+                        <button id="resetBtn" class="btn btn-gray">Reset <span id="resetCategory">Body</span></button>
+                        <button id="nextBtn" class="btn btn-gray">Next</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    <!-- Results Screen -->
+    <div id="resultsScreen" class="screen">
+        <div class="card-large">
+            <div class="header-section">
+                <h1>Assessment Complete!</h1>
+                <p>Thank you for completing the Wellbeing Assessment.</p>
+            </div>
+
+            <!-- Employee Info Display -->
+            <div class="employee-info-display">
+                <h2>Employee Information</h2>
+                <div class="info-grid">
+                    <div>
+                        <p class="info-label">Name:</p>
+                        <p class="info-value" id="displayName"></p>
+                    </div>
+                    <div>
+                        <p class="info-label">Employee ID:</p>
+                        <p class="info-value" id="displayId"></p>
+                    </div>
+                    <div>
+                        <p class="info-label">Department:</p>
+                        <p class="info-value" id="displayDepartment"></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Scores Display -->
+            <div class="scores-section">
+                <h2>Your Results</h2>
+
+                <div class="score-item score-body">
+                    <div class="score-header">
+                        <h3>Body Fuel Tank</h3>
+                        <span class="score-value" id="bodyScore"></span>
+                    </div>
+                    <div class="progress-bar-result">
+                        <div class="progress-fill-body" id="bodyProgress"></div>
+                    </div>
+                </div>
+
+                <div class="score-item score-mind">
+                    <div class="score-header">
+                        <h3>Mind Fuel Tank</h3>
+                        <span class="score-value" id="mindScore"></span>
+                    </div>
+                    <div class="progress-bar-result">
+                        <div class="progress-fill-mind" id="mindProgress"></div>
+                    </div>
+                </div>
+
+                <div class="score-item score-heart">
+                    <div class="score-header">
+                        <h3>Heart Fuel Tank</h3>
+                        <span class="score-value" id="heartScore"></span>
+                    </div>
+                    <div class="progress-bar-result">
+                        <div class="progress-fill-heart" id="heartProgress"></div>
+                    </div>
+                </div>
+
+                <div class="score-item score-purpose">
+                    <div class="score-header">
+                        <h3>Purpose Fuel Tank</h3>
+                        <span class="score-value" id="purposeScore"></span>
+                    </div>
+                    <div class="progress-bar-result">
+                        <div class="progress-fill-purpose" id="purposeProgress"></div>
+                    </div>
+                </div>
+
+                <div class="score-item score-total">
+                    <div class="score-header">
+                        <h3>Total Overall Score</h3>
+                        <span class="score-value" id="totalScore"></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="action-buttons" id="action-btn">
+                <button id="downloadPdfBtn" class="btn btn-success btn-large">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"
+                        fill="currentColor">
+                        <path fill-rule="evenodd"
+                            d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z"
+                            clip-rule="evenodd" />
+                    </svg>
+                    Download PDF Report
+                </button>
+                <button id="startOverBtn" class="btn btn-gray btn-large">Start New Assessment</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
