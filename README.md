@@ -1,6 +1,6 @@
 # Wellbeing Assessment Prework
 
-A lightweight, no-build-step version of the Employee Health & Mentality Assessment tool built with plain HTML, Tailwind CSS (CDN), Vanilla JavaScript, and optional PHP + MySQL for backend storage. All core features run entirely client-side; the PHP layer is only needed if you want to prevent duplicate submissions.
+A lightweight, no-build-step version of the Employee Health & Mentality Assessment tool built with plain HTML, Tailwind CSS (CDN), Vanilla JavaScript. All core features run entirely client-side; the PHP layer is only needed if you want to prevent duplicate submissions.
 
 ---
 
