@@ -1,4 +1,4 @@
-# Pre-Training Health & Mentality Assessment Tool
+# Wellbeing Assessment Prework
 
 A client-side web application for employee wellness self-assessment across four dimensions: **Body**, **Mind**, **Heart**, and **Purpose**. Employees complete a short survey, view color-coded results, and download a professionally formatted PDF report — all without any backend or database.
 
