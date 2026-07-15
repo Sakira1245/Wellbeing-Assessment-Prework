@@ -26,13 +26,10 @@ A client-side web application for employee wellness self-assessment across four 
 
 | Layer | Technology |
 |---|---|
-| Framework | React 18 + TypeScript |
-| Styling | Tailwind CSS v4 |
-| Build Tool | Vite |
-| PDF Generation | jsPDF |
-| Icons | Lucide React |
-| UI Primitives | Radix UI |
-| Animation | Motion |
+| Markup | HTML5 |
+| Styling | Tailwind CSS 3.x via CDN |
+| Logic | Vanilla JavaScript (ES6) |
+| PDF Generation | jsPDF 2.5.1 via CDN |
 
 ---
 
